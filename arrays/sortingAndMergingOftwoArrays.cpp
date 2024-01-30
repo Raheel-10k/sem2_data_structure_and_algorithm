@@ -9,7 +9,7 @@ int main() {
 
     for (int i = 0; i < numOfGirls; i++) {
         cin >> girls[i];
-    }
+    }//insert girls
 
     int numOfBoys = 0;
     cout << "Enter number of boys: ";
@@ -18,7 +18,7 @@ int main() {
 
     for (int i = 0; i < numOfBoys; i++) {
         cin >> boys[i];
-    }
+    }//insert boys
 
     int studentData[numOfBoys + numOfGirls], least = 0, highest = 0;
 
@@ -30,7 +30,7 @@ int main() {
             studentData[i] = boys[highest];
             highest++;
         }
-    }
+    }//sorting
 
     for (int i = 0; i < numOfBoys + numOfGirls; i++) {
         cout << studentData[i] << " ";
