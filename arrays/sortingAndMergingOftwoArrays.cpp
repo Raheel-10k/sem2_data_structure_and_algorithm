@@ -1,27 +1,40 @@
-#include "iostream"
+#include <iostream>
 using namespace std;
 
-void mergeAndSort() {
-    int girls[5]={55,60,65,68,70};
-    int boys[8]={51,53,66,80,90,92,95,99};
+int main() {
+    int numOfGirls = 0;
+    cout << "Enter number of girls: ";
+    cin >> numOfGirls;
+    int girls[numOfGirls];
 
-    int maxlength=(sizeof(girls)/sizeof(girls[0]))+(sizeof(boys)/sizeof(boys[0]));
+    for (int i = 0; i < numOfGirls; i++) {
+        cin >> girls[i];
+    }
 
-    int classGrades[maxlength], boyp=0, girlp=0;
+    int numOfBoys = 0;
+    cout << "Enter number of boys: ";
+    cin >> numOfBoys;
+    int boys[numOfBoys];
 
-    for(int i=0; i<maxlength;i++) {
-        if(boys[boyp]>girls[girlp]){
-            classGrades[i]=girls[girlp];
-            girlp++;
-        }
-        else if(boys[boyp]<girls[girlp]) {
-            classGrades[i]=boys[girlp];
-            boyp++;
-        }
-        else{
-            classGrades[i]=girls[girlp];
-            i++;
-            classGrades[i]=boys[boyp];
+    for (int i = 0; i < numOfBoys; i++) {
+        cin >> boys[i];
+    }
+
+    int studentData[numOfBoys + numOfGirls], least = 0, highest = 0;
+
+    for (int i = 0; i < numOfBoys + numOfGirls; i++) {
+        if (least < numOfGirls && (highest == numOfBoys || girls[least] < boys[highest])) {
+            studentData[i] = girls[least];
+            least++;
+        } else {
+            studentData[i] = boys[highest];
+            highest++;
         }
     }
+
+    for (int i = 0; i < numOfBoys + numOfGirls; i++) {
+        cout << studentData[i] << " ";
+    }
+
+    return 0;
 }
