@@ -28,4 +28,5 @@ int main() {
         cin>>arr[i];
     }
     swappingLargestAndSmallest(arr, len);
+    return 0;
 }
