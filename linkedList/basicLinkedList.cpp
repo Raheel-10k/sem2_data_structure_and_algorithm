@@ -10,6 +10,7 @@ struct Node {
 Node *insert(Node *head, int value) {
     Node *newNode = new Node(value); // new nodes
     newNode->next = head;
+    cout<<newNode->data<<" : "<<newNode->next<<endl;
     return newNode;
 } // new node
 
@@ -31,6 +32,5 @@ int main() {
     // This is because a linkedlist generally follows fifo
     cout << "Linked List: ";
     display(head);
-
     return 0;
 }
