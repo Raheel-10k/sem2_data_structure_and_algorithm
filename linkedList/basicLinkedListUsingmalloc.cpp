@@ -4,7 +4,7 @@ struct Node {
     int data;
     Node *next;
 
-    Node(int value) : data(value), next(nullptr) {}// what is this???
+    Node(int value) : data(value), next(nullptr) {}
 };
 
 Node *insert(Node *head, int value) {
@@ -12,6 +12,7 @@ Node *insert(Node *head, int value) {
     ;
     newNode->data = value;
     newNode->next = head;
+    cout<<newNode->next<<" "<<newNode->data<<endl;
     return newNode;
 } // new node
 
