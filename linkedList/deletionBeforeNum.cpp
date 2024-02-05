@@ -26,6 +26,23 @@ void deleteNodeBefore(Node* start, int num) {
     
 }
 
+Node* insertData(Node* head, int value) {
+    Node* newNode = (Node*)malloc(sizeof(Node));
+    newNode->data = value;
+    newNode->next = nullptr;
+
+    if (head == nullptr) {
+        return newNode;
+    }
+    Node* current = head;
+    while (current->next != nullptr) {
+        current = current->next;
+    }
+    current->next = newNode;
+
+    return head;
+}
+
 void display(Node *head) {
     Node *current=head;
     while (current != nullptr) {
@@ -39,9 +56,11 @@ void display(Node *head) {
 int main() {
     // Create a sample linked list
     Node* start = new Node(1);
-    start->next = new Node(2);
-    start->next->next = new Node(3);
-    start->next->next->next = new Node(4);
+    
+    start=insertData(start, 2);
+    start=insertData(start, 9);
+    start=insertData(start, 3);
+    start=insertData(start, 5);
     display(start);
     deleteNodeBefore(start, 3);
 
