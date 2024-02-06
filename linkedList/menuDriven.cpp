@@ -76,7 +76,7 @@ Node* deleteStartNode(Node* head) {
 
     Node* newHead = head->next;
     free(head);
-
+    cout<<"Node deleted.";
     return newHead;
 }
 
@@ -93,6 +93,57 @@ Node *deleteLastNode(Node *head) {
     }
     free(current);
     previous->next=nullptr;
+    cout<<"Node deleted.";
+    return head;
+}
+
+Node *deleteNodeWithSpecificValue(Node *head, int val){
+    if(head==nullptr) {
+        cout << "Linked list is empty. Cannot delete start node." << endl;
+        return nullptr;
+    }
+    Node *current=head;
+    Node *previous=current;
+    while(current!=nullptr && current->data==val) {
+        previous=current;
+        current=current->next;
+    }
+    previous->next=current->next;
+    free(current);
+    cout<<"Node with value "<<val<<" deleted.";
+    return head;
+}
+
+Node *deleteNodeBefore(Node* start, int num) {
+
+    Node* ptr = start;
+    Node* preptr = nullptr;
+
+    while (ptr->next != nullptr && ptr->next->data != num) {
+        preptr = ptr;
+        ptr = ptr->next;
+    }
+
+        Node* temp = preptr->next;
+        preptr->next = ptr->next;
+        
+        free(temp);
+        cout<<"Node deleted.";
+        return start;
+}
+
+Node *deleteNodeAfter(Node* start, int num) {
+    Node* ptr = start;
+
+    while (ptr != nullptr && ptr->data != num) {
+        ptr = ptr->next;
+    }
+
+    Node* temp = ptr->next;
+    ptr->next = temp->next;
+
+    free(temp);
+    return start;
 }
 
 void display(Node *head) {
@@ -112,6 +163,7 @@ int main() {
     {
         cout<<"Enter '1' for insertion, '2' for deletion and '3' for displaying: ";
         cin>>choice;
+        int val, valueToAddAfter;
         switch (choice)
         {
         case '1':
@@ -120,23 +172,22 @@ int main() {
             switch (choice)
             {
             case '1':
-                int val;
+
                 cout<<"Enter value to add: ";
                 cin>>val;
-                insertionAtBegining(head, val);
+                head=insertionAtBegining(head, val);
                 break;
             case '2':
-                int val;
+
                 cout<<"Enter value to add: ";
                 cin>>val;
-                insertionAtEnd(head, val);
+                head=insertionAtEnd(head, val);
                 break;
             case '3':
                 display(head);
-                int val, valueToAddAfter;
                 cout<<"First enter value to add, then enter the value you would like to add this number after:\n";
                 cin>>val>>valueToAddAfter;
-                insertAfterValue(head, val, valueToAddAfter);
+                head=insertAfterValue(head, val, valueToAddAfter);
             default:
                 cout<<"invalid error";
                 break;
@@ -149,25 +200,32 @@ int main() {
             switch (choice)
             {
             case '1':
-                deleteStartNode(head);
+                head=deleteStartNode(head);
                 break;
             case '2':
-                //deletionAtEnd(head, val);
+                head=deleteLastNode(head);
                 break;
             case '3':
-                //deletionInbetween(head, val, valuetoaddbefore);
+                cout<<"Enter value to delete: ";
+                cin>>val;
+                head=deleteNodeWithSpecificValue(head, val);
+                // head=deleteNodeBefore(head, val);  //where value should be the value before which the node has to be deleted.
+                // head=deleteNodeAfter(head, val);   //where value should be the value after which the node has to be deleted.
             default:
                 cout<<"invalid error";
                 break;
             }
             break;
         case '3':
-            //display(head);
+            display(head);
             break;
         
         default:
+            cout<<"invalid error";
             break;
         }
+        cout<<"press 'n' to end execution or any other key to continue: ";
+        cin>>choice;
     } while (choice!='n');
     
 }
