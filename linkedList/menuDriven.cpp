@@ -80,6 +80,21 @@ Node* deleteStartNode(Node* head) {
     return newHead;
 }
 
+Node *deleteLastNode(Node *head) {
+    if (head == nullptr) {
+        cout << "Linked list is empty. Cannot delete start node." << endl;
+        return nullptr;
+    }
+    Node *current=head;
+    Node *previous=nullptr;
+    while(current->next!=nullptr) {
+        previous=current;
+        current=current->next;
+    }
+    free(current);
+    previous->next=nullptr;
+}
+
 void display(Node *head) {
     Node *current = head;
     while (current != nullptr) {
@@ -147,8 +162,6 @@ int main() {
             }
             break;
         case '3':
-            cout<<"Enter '1' For deletion at begining, '2' For deletion at end, '3' For deletion in between: ";
-            cin>>choice;
             //display(head);
             break;
         
