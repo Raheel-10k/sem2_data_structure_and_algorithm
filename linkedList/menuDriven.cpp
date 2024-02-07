@@ -209,8 +209,8 @@ int main() {
                 cout<<"Enter value to delete: ";
                 cin>>val;
                 head=deleteNodeWithSpecificValue(head, val);
-                // head=deleteNodeBefore(head, val);  //where value should be the value before which the node has to be deleted.
-                // head=deleteNodeAfter(head, val);   //where value should be the value after which the node has to be deleted.
+                // head=deleteNodeBefore(head, val);  //where value should be the value before which the node has to be deleted. Better first display the linked list and ask user to refer the list and enter values.
+                // head=deleteNodeAfter(head, val);   //where value should be the value after which the node has to be deleted. Better first display the linked list and ask user to refer the list and enter values.
             default:
                 cout<<"invalid error";
                 break;
