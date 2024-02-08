@@ -53,7 +53,7 @@ void insertValueAtEndForEndIsKnown() {
     cout<<endl;
     cout<<"Enter new data to add: ";
     cin>>arr[i];
-    cout<<arr[i];
+    //cout<<arr[i];
     i=0;
     while(arr[i]!=-1) {
         cout<<arr[i];
@@ -81,10 +81,10 @@ void insertValueAtEndForEndIsUnknown() {
     cout<<"Array has "<<count<<" elements."<<endl;
     cout<<"Enter value to add: ";
     cin>>val;
-    arr[count+1]=val;
+    arr[count]=val;
     i=0;
     cout<<"After inserting: "<<endl;
-    while(arr[i]==-1) {
+    while(arr[i]!=-1) {
         cout<<arr[i];
         i++;
     }
@@ -162,8 +162,8 @@ void deletionViaParticularPosition() {
 int main() {
     //insertAtBeginning();
     //insertValueAtEndForEndIsKnown();
-    //insertValueAtEndForEndIsUnknown();
-    //insertAtGivenLocation();
-    deletionViaParticularPosition();
+    insertValueAtEndForEndIsUnknown();
+    insertAtGivenLocation();
+    //deletionViaParticularPosition();
     return 0;
 }
