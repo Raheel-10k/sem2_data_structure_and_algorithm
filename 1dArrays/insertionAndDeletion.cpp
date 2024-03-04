@@ -159,11 +159,36 @@ void deletionViaParticularPosition() {
     cout<<endl;
 }
 
+void deletionAtEnd() {
+    int arr[100], n;
+    fill_n(arr, 100, -1);
+    cout<<"Enter number of values to add initially: ";
+    cin>>n;
+    int val=0;
+    for(int i=0;i<n;i++) {
+        cout<<"Enter initial value"<<i<<": ";
+        cin>>val;
+        arr[i]=val;
+    }
+    cout<<"OG array: "; 
+    for(int j=0;j<n;j++){
+        cout<<arr[j]<<" ";
+    }
+    n=n-1;
+
+    cout<<"Array post-deletion: "; 
+    for(int j=0;j<n && arr[j]!=-1;j++){
+        cout<<arr[j]<<" ";
+    }
+    cout<<endl;
+}
+
 int main() {
     //insertAtBeginning();
     //insertValueAtEndForEndIsKnown();
-    insertValueAtEndForEndIsUnknown();
-    insertAtGivenLocation();
+    //insertValueAtEndForEndIsUnknown();
+    //insertAtGivenLocation();
     //deletionViaParticularPosition();
+    deletionAtEnd();
     return 0;
 }
